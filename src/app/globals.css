@@ -1,26 +1,92 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Ultima Pro Font Family */
+@font-face {
+  font-family: "Ultima Pro";
+  src: url("/fonts/UltimaProLt.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ultima Pro";
+  src: url("/fonts/UltimaProLt-Italic.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Ultima Pro";
+  src: url("/fonts/UltimaPro.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ultima Pro";
+  src: url("/fonts/UltimaPro-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Ultima Pro";
+  src: url("/fonts/UltimaPro-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ultima Pro";
+  src: url("/fonts/UltimaPro-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Ultima Pro";
+  src: url("/fonts/UltimaProBlack.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ultima Pro";
+  src: url("/fonts/UltimaProBlack-BlackItalic.otf") format("opentype");
+  font-weight: 900;
+  font-style: italic;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: #0062b8;
+  --color-primary-dark: #004a8f;
+  --color-primary-darker: #003366;
+  --color-accent-light: #e6f2fb;
+  --font-sans: "Ultima Pro", "Arial", "Helvetica Neue", "Helvetica", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: #333333;
+  font-family: "Ultima Pro", Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom wave clip paths */
+.wave-top {
+  clip-path: ellipse(75% 100% at 50% 100%);
+}
+
+.wave-bottom {
+  clip-path: ellipse(75% 100% at 50% 0%);
 }
