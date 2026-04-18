@@ -306,7 +306,7 @@ export default function Features() {
                 <span
                   style={{
                     marginTop: "40px",
-                    fontSize: "30px",
+                    fontSize: "26px",
                     fontWeight: 700,
                     lineHeight: 1.2,
                     color: "#204391",
