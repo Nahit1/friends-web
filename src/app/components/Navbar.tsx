@@ -63,6 +63,26 @@ export default function Navbar() {
         .nav-dot {
           transition: opacity 0.3s ease, transform 0.3s ease;
         }
+        @media (max-width: 1750px) {
+          .nav-blue-bar {
+            width: 700px !important;
+            gap: 30px !important;
+            padding-left: 40px !important;
+          }
+          .nav-blue-bar .nav-link {
+            font-size: 22px !important;
+          }
+        }
+        @media (max-width: 1550px) {
+          .nav-blue-bar {
+            width: 620px !important;
+            gap: 22px !important;
+            padding-left: 30px !important;
+          }
+          .nav-blue-bar .nav-link {
+            font-size: 19px !important;
+          }
+        }
       `}</style>
 
       <nav
@@ -75,7 +95,7 @@ export default function Navbar() {
       >
         {/* Blue menu section - desktop only */}
         <div
-          className="hidden md:flex md:items-center"
+          className="hidden md:flex md:items-center nav-blue-bar"
           style={{
             position: "absolute",
             top: "50%",
