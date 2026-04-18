@@ -16,6 +16,7 @@ const navLinks = [
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("#anasayfa");
+  const [scrolled, setScrolled] = useState(false);
   const isClickScrolling = useRef(false);
 
   useEffect(() => {
@@ -42,6 +43,7 @@ export default function Navbar() {
         current = "#iletisim";
       }
       setActiveLink(current);
+      setScrolled(window.scrollY > 10);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -49,7 +51,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header style={{ position: "sticky", top: 0, zIndex: 50 }}>
+    <header style={{ position: "sticky", top: 0, zIndex: 50, boxShadow: scrolled ? "0 4px 12px rgba(0,0,0,0.1)" : "none", transition: "box-shadow 0.3s ease" }}>
       {/* Hover styles */}
       <style>{`
         .nav-link {
@@ -73,7 +75,7 @@ export default function Navbar() {
       >
         {/* Blue menu section - desktop only */}
         <div
-          className="hidden md:flex md:items-center md:justify-between"
+          className="hidden md:flex md:items-center"
           style={{
             position: "absolute",
             top: "50%",
@@ -84,9 +86,9 @@ export default function Navbar() {
             backgroundColor: "#064597",
             borderTopLeftRadius: "35px",
             borderBottomLeftRadius: "35px",
-            paddingLeft: "15px",
+            paddingLeft: "55px",
             paddingRight: "40px",
-            gap: "50px",
+            gap: "40px",
             zIndex: 2,
           }}
         >
@@ -96,7 +98,7 @@ export default function Navbar() {
               href={link.href}
               className="nav-link"
               style={{
-                fontFamily: "Arial, Helvetica, sans-serif",
+                fontFamily: "'Ultima Pro', Arial, Helvetica, sans-serif",
                 fontSize: "25px",
                 fontWeight: 700,
                 color: activeLink === link.href ? "#0ae2da" : "white",

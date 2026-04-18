@@ -54,24 +54,7 @@ export default function Features() {
               boxSizing: "border-box",
               position: "relative",
             }}
-          >
-            {/* Son sağ alt silindir - yarım daire şekli, silindirin üstüne biner */}
-            {i === 5 && (
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: "-15px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  width: "112px",
-                  height: "40px",
-                  backgroundColor: "#99e3da",
-                  borderRadius: "0 0 56px 56px",
-                  zIndex: 1,
-                }}
-              />
-            )}
-          </div>
+          ></div>
         ))}
       </div>
 
@@ -101,9 +84,10 @@ export default function Features() {
             <div style={{ marginBottom: "20px", paddingLeft: "155px" }}>
               <h2
                 style={{
+                  fontFamily: "'Ultima Pro', Arial, Helvetica, sans-serif",
                   fontSize: "60px",
-                  fontWeight: 400,
-                  color: "#0062b8",
+                  fontWeight: 700,
+                  color: "#004a9b",
                   lineHeight: 1.2,
                 }}
               >
@@ -325,7 +309,7 @@ export default function Features() {
                     fontSize: "30px",
                     fontWeight: 700,
                     lineHeight: 1.2,
-                    color: "#0062b8",
+                    color: "#204391",
                     textAlign: "center",
                     whiteSpace: "pre-line",
                   }}
@@ -354,18 +338,17 @@ export default function Features() {
             <div style={{ paddingLeft: "155px" }}>
               <h2
                 style={{
+                  fontFamily: "'Ultima Pro', Arial, Helvetica, sans-serif",
                   fontSize: "60px",
-                  fontWeight: 800,
-                  color: "#0062b8",
+                  fontWeight: 700,
+                  color: "#004a9b",
                   lineHeight: 1.2,
                 }}
               >
-                <span style={{ fontWeight: 400 }}>Patili dostlarınız için</span>
+                Patili dostlarınız için
                 <br />
-                <span style={{ fontWeight: 400 }}>en iyi seçim </span>
-                <span style={{ fontWeight: 400, fontStyle: "italic" }}>
-                  Friends...
-                </span>
+                en iyi seçim{" "}
+                <span style={{ fontStyle: "italic" }}>Friends...</span>
               </h2>
             </div>
 
@@ -518,8 +501,8 @@ export default function Features() {
             style={{
               fontSize: "90px",
               fontWeight: 700,
-              fontFamily: "Arial, Helvetica, sans-serif",
-              color: "#0062b8",
+              fontFamily: "'Ultima Pro', Arial, Helvetica, sans-serif",
+              color: "#004a9b",
               lineHeight: 1.2,
             }}
           >
@@ -842,8 +825,8 @@ export default function Features() {
               style={{
                 fontSize: "90px",
                 fontWeight: 700,
-                fontFamily: "Arial, Helvetica, sans-serif",
-                color: "#0062b8",
+                fontFamily: "'Ultima Pro', Arial, Helvetica, sans-serif",
+                color: "#004a9b",
                 lineHeight: 1.2,
               }}
             >
