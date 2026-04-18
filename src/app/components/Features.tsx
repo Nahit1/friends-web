@@ -244,11 +244,11 @@ export default function Features() {
           <div
             style={{
               position: "absolute",
-              top: 0,
+              top: "30px",
               left: "50%",
               transform: "translateX(-50%)",
               width: "calc(100% + 140px)",
-              height: "400px",
+              height: "330px",
               backgroundColor: "#ececec",
               borderRadius: "210px",
             }}
@@ -258,7 +258,7 @@ export default function Features() {
           <div
             style={{
               position: "absolute",
-              top: "-40px",
+              top: 0,
               left: "100px",
               display: "flex",
               gap: "50px",
