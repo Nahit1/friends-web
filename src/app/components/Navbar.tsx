@@ -72,15 +72,115 @@ export default function Navbar() {
           .nav-blue-bar .nav-link {
             font-size: 22px !important;
           }
+          .nav-search-bar input {
+            font-size: 22px !important;
+          }
         }
-        @media (max-width: 1550px) {
+        @media (max-width: 1600px) {
           .nav-blue-bar {
-            width: 620px !important;
-            gap: 22px !important;
-            padding-left: 30px !important;
+            width: 650px !important;
+            gap: 25px !important;
+            padding-left: 35px !important;
+            height: 55px !important;
           }
           .nav-blue-bar .nav-link {
-            font-size: 19px !important;
+            font-size: 20px !important;
+          }
+          .nav-logo-desktop img {
+            height: 150px !important;
+            top: 40px !important;
+          }
+          .nav-search-bar {
+            width: 320px !important;
+            margin-left: 80px !important;
+          }
+          .nav-search-bar input {
+            height: 55px !important;
+            font-size: 20px !important;
+          }
+          .nav-search-bar button {
+            width: 42px !important;
+            height: 42px !important;
+          }
+        }
+        @media (max-width: 1400px) {
+          .nav-blue-bar {
+            width: 580px !important;
+            gap: 18px !important;
+            padding-left: 25px !important;
+            height: 50px !important;
+          }
+          .nav-blue-bar .nav-link {
+            font-size: 18px !important;
+          }
+          .nav-logo-desktop img {
+            height: 130px !important;
+            top: 35px !important;
+          }
+          .nav-search-bar {
+            width: 280px !important;
+            margin-left: 60px !important;
+          }
+          .nav-search-bar input {
+            height: 50px !important;
+            font-size: 18px !important;
+          }
+          .nav-search-bar button {
+            width: 40px !important;
+            height: 40px !important;
+          }
+        }
+        @media (max-width: 1125px) {
+          .nav-blue-bar {
+            width: 480px !important;
+            gap: 12px !important;
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+            height: 45px !important;
+          }
+          .nav-blue-bar .nav-link {
+            font-size: 15px !important;
+          }
+          .nav-blue-bar .nav-dot {
+            width: 7px !important;
+            height: 7px !important;
+          }
+          .nav-logo-desktop img {
+            height: 110px !important;
+            top: 30px !important;
+          }
+          .nav-search-bar {
+            width: 220px !important;
+            margin-left: 40px !important;
+          }
+          .nav-search-bar input {
+            height: 45px !important;
+            font-size: 15px !important;
+            padding-left: 15px !important;
+          }
+          .nav-search-bar button {
+            width: 35px !important;
+            height: 35px !important;
+          }
+        }
+        @media (max-width: 920px) {
+          .nav-blue-bar {
+            display: none !important;
+          }
+          .nav-search-bar {
+            display: none !important;
+          }
+          .nav-logo-desktop {
+            display: none !important;
+          }
+          .nav-mobile-logo {
+            display: block !important;
+          }
+          .nav-mobile-btn {
+            display: block !important;
+          }
+          .nav-mobile-menu {
+            display: block !important;
           }
         }
       `}</style>
@@ -172,7 +272,7 @@ export default function Navbar() {
           {/* Logo - desktop */}
           <a
             href="/"
-            className="hidden md:block"
+            className="hidden md:block nav-logo-desktop"
             style={{
               position: "relative",
               flexShrink: 0,
@@ -198,7 +298,7 @@ export default function Navbar() {
           {/* Logo - mobile (smaller) */}
           <a
             href="/"
-            className="block md:hidden"
+            className="block md:hidden nav-mobile-logo"
             style={{ flexShrink: 0, padding: "12px 0 12px 16px" }}
           >
             <Image
@@ -223,7 +323,7 @@ export default function Navbar() {
               flexShrink: 0,
               marginLeft: "120px",
             }}
-            className="hidden md:block"
+            className="hidden md:block nav-search-bar"
           >
             <input
               type="text"
@@ -266,7 +366,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden"
+            className="md:hidden nav-mobile-btn"
             style={{
               color: "#064597",
               padding: "8px",
@@ -283,7 +383,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {mobileOpen && (
         <div
-          className="md:hidden"
+          className="md:hidden nav-mobile-menu"
           style={{ background: "#064597", padding: "20px 24px" }}
         >
           {navLinks.map((link) => (

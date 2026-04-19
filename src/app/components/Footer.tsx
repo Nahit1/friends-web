@@ -19,6 +19,7 @@ export default function Footer() {
   return (
     <footer
       id="iletisim"
+      className="footer-wrapper"
       style={{
         backgroundColor: "#004a9b",
         width: "100%",
@@ -37,11 +38,94 @@ export default function Footer() {
         .footer-dot {
           transition: opacity 0.3s ease, transform 0.3s ease;
         }
+        @media (max-width: 1300px) {
+          .footer-upper {
+            padding-left: 40px !important;
+          }
+          .footer-logo-section {
+            padding-left: 40px !important;
+          }
+          .footer-menu {
+            margin-left: 60px !important;
+          }
+          .footer-input-section {
+            width: 320px !important;
+          }
+          .footer-input-section input {
+            height: 55px !important;
+            font-size: 20px !important;
+          }
+          .footer-contact p {
+            font-size: 20px !important;
+          }
+        }
+        @media (max-width: 1100px) {
+          .footer-wrapper {
+            height: auto !important;
+          }
+          .footer-upper {
+            flex-direction: column !important;
+            align-items: center !important;
+            padding-top: 50px !important;
+            gap: 40px !important;
+          }
+          .footer-logo-section {
+            padding-left: 0 !important;
+            align-items: center !important;
+            text-align: center !important;
+          }
+          .footer-menu {
+            display: none !important;
+          }
+          .footer-input-section {
+            margin-left: 0 !important;
+            align-self: center !important;
+            margin-bottom: 20px !important;
+            width: 100% !important;
+            max-width: 400px !important;
+          }
+          .footer-input-section p {
+            text-align: center !important;
+            margin-left: 0 !important;
+            margin-bottom: 10px !important;
+          }
+          .footer-bottom {
+            padding: 0 40px !important;
+          }
+          .footer-bottom p {
+            font-size: 14px !important;
+          }
+        }
+        @media (max-width: 600px) {
+          .footer-logo-section img {
+            width: 150px !important;
+            height: 107px !important;
+          }
+          .footer-contact p {
+            font-size: 18px !important;
+          }
+          .footer-input-section {
+            max-width: 300px !important;
+          }
+          .footer-input-section input {
+            height: 50px !important;
+            font-size: 18px !important;
+          }
+          .footer-input-section p {
+            font-size: 19px !important;
+          }
+          .footer-bottom {
+            flex-direction: column !important;
+            gap: 15px !important;
+            text-align: center !important;
+          }
+        }
       `}</style>
 
       {/* Üst bölüm */}
       <div style={{ flex: 1 }}>
         <div
+          className="footer-upper"
           style={{
             maxWidth: "1420px",
             margin: "0 auto",
@@ -51,7 +135,7 @@ export default function Footer() {
           }}
         >
           {/* Sol - Logo + İletişim */}
-          <div style={{ paddingLeft: "120px" }}>
+          <div className="footer-logo-section" style={{ paddingLeft: "120px" }}>
             <Image
               src="/images/friends-logo.png"
               alt="Friends Pet Production"
@@ -60,6 +144,7 @@ export default function Footer() {
               style={{ width: "200px", height: "143px", objectFit: "contain" }}
             />
             <div
+              className="footer-contact"
               style={{
                 marginTop: "40px",
                 display: "flex",
@@ -83,6 +168,7 @@ export default function Footer() {
 
           {/* Sağ - Menü linkleri */}
           <div
+            className="footer-menu"
             style={{
               marginLeft: "100px",
               marginTop: "30px",
@@ -133,6 +219,7 @@ export default function Footer() {
 
           {/* Sağ - Ürün Ara Input */}
           <div
+            className="footer-input-section"
             style={{
               marginLeft: "auto",
               width: "425px",
@@ -210,6 +297,7 @@ export default function Footer() {
       {/* Alt bölüm - 130px */}
       <div style={{ height: "130px", flexShrink: 0 }}>
         <div
+          className="footer-bottom"
           style={{
             maxWidth: "1420px",
             margin: "0 auto",
