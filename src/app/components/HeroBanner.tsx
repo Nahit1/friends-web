@@ -1,8 +1,20 @@
 "use client";
 
+import { useEffect } from "react";
+
 export default function HeroBanner() {
+  useEffect(() => {
+    const prev = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+    requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.style.scrollBehavior = prev;
+    });
+  }, []);
+
   return (
-    <section id="anasayfa" style={{ position: "relative", width: "100%", height: "1190px", overflow: "hidden" }}>
+    <section id="anasayfa" style={{ position: "relative", width: "100%", height: "1190px", marginTop: "190px", overflow: "hidden" }}>
       {/* Video Background - full cover */}
       <video
         autoPlay

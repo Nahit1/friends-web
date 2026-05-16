@@ -15,6 +15,16 @@ export default function KediPage() {
   );
 
   useEffect(() => {
+    const prev = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+    requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.style.scrollBehavior = prev;
+    });
+  }, []);
+
+  useEffect(() => {
     const update = () => {
       if (!titleRef.current || !filterRowRef.current) return;
       const titleRight = titleRef.current.getBoundingClientRect().right;
@@ -39,7 +49,7 @@ export default function KediPage() {
             position: relative;
             width: 100%;
             height: 220px;
-            margin-top: 100px;
+            margin-top: 290px;
             background-image: url('/images/ust-zemin.png');
             background-size: cover;
             background-position: center;

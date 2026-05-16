@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, use } from "react";
+import { useState, use, useEffect } from "react";
 import { notFound } from "next/navigation";
 import { FiPlus, FiMinus } from "react-icons/fi";
 import {
@@ -48,6 +48,16 @@ export default function KediDetailPage({
 
   const [openKey, setOpenKey] = useState<AccordionKey | null>("aciklama");
 
+  useEffect(() => {
+    const prev = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+    requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.style.scrollBehavior = prev;
+    });
+  }, []);
+
   if (!product) notFound();
 
   const toggle = (k: AccordionKey) => setOpenKey(openKey === k ? null : k);
@@ -61,7 +71,7 @@ export default function KediDetailPage({
           .detail-top {
             max-width: 1420px;
             margin: 0 auto;
-            padding: 60px 24px 40px;
+            padding: 250px 24px 40px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;

@@ -26,6 +26,20 @@ export default function Navbar() {
   );
   const [scrolled, setScrolled] = useState(false);
   const isClickScrolling = useRef(false);
+  const shouldScrollTopRef = useRef(false);
+
+  useEffect(() => {
+    if (shouldScrollTopRef.current) {
+      shouldScrollTopRef.current = false;
+      const prev = document.documentElement.style.scrollBehavior;
+      document.documentElement.style.scrollBehavior = "auto";
+      window.scrollTo(0, 0);
+      requestAnimationFrame(() => {
+        window.scrollTo(0, 0);
+        document.documentElement.style.scrollBehavior = prev;
+      });
+    }
+  }, [pathname]);
 
   useEffect(() => {
     if (!onHome) {
@@ -65,7 +79,7 @@ export default function Navbar() {
   }, [onHome, pathname]);
 
   return (
-    <header style={{ position: "sticky", top: 0, zIndex: 50, boxShadow: scrolled ? "0 4px 12px rgba(0,0,0,0.1)" : "none", transition: "box-shadow 0.3s ease" }}>
+    <header style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, boxShadow: scrolled ? "0 4px 12px rgba(0,0,0,0.1)" : "none", transition: "box-shadow 0.3s ease" }}>
       {/* Hover styles */}
       <style>{`
         .nav-link {
@@ -247,7 +261,16 @@ export default function Navbar() {
                 setActiveLink(link.href);
                 if (isHashLink(link.href)) {
                   if (!onHome) {
-                    router.push("/" + link.href);
+                    if (link.href === "#anasayfa") {
+                      shouldScrollTopRef.current = true;
+                      router.push("/");
+                    } else {
+                      router.push("/" + link.href);
+                    }
+                    return;
+                  }
+                  if (link.href === "#anasayfa") {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
                     return;
                   }
                   isClickScrolling.current = true;
@@ -259,7 +282,12 @@ export default function Navbar() {
                     isClickScrolling.current = false;
                   }, 1000);
                 } else {
-                  router.push(link.href);
+                  if (pathname === link.href) {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  } else {
+                    shouldScrollTopRef.current = true;
+                    router.push(link.href);
+                  }
                 }
               }}
             >
@@ -426,7 +454,16 @@ export default function Navbar() {
                 setMobileOpen(false);
                 if (isHashLink(link.href)) {
                   if (!onHome) {
-                    router.push("/" + link.href);
+                    if (link.href === "#anasayfa") {
+                      shouldScrollTopRef.current = true;
+                      router.push("/");
+                    } else {
+                      router.push("/" + link.href);
+                    }
+                    return;
+                  }
+                  if (link.href === "#anasayfa") {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
                     return;
                   }
                   isClickScrolling.current = true;
@@ -438,7 +475,12 @@ export default function Navbar() {
                     isClickScrolling.current = false;
                   }, 1000);
                 } else {
-                  router.push(link.href);
+                  if (pathname === link.href) {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  } else {
+                    shouldScrollTopRef.current = true;
+                    router.push(link.href);
+                  }
                 }
               }}
             >
