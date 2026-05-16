@@ -440,7 +440,7 @@ export default function Features() {
             >
               <h2
                 style={{
-                  fontFamily: "'Ultima Pro', Arial, Helvetica, sans-serif",
+                  fontFamily: "var(--font-signika), Arial, Helvetica, sans-serif",
                   fontSize: "60px",
                   fontWeight: 700,
                   color: "#004a9b",
@@ -705,7 +705,7 @@ export default function Features() {
             <div className="patili-title" style={{ paddingLeft: "155px" }}>
               <h2
                 style={{
-                  fontFamily: "'Ultima Pro', Arial, Helvetica, sans-serif",
+                  fontFamily: "var(--font-signika), Arial, Helvetica, sans-serif",
                   fontSize: "60px",
                   fontWeight: 700,
                   color: "#004a9b",
@@ -872,7 +872,7 @@ export default function Features() {
             style={{
               fontSize: "90px",
               fontWeight: 700,
-              fontFamily: "'Ultima Pro', Arial, Helvetica, sans-serif",
+              fontFamily: "var(--font-signika), Arial, Helvetica, sans-serif",
               color: "#004a9b",
               lineHeight: 1.2,
             }}
@@ -1352,7 +1352,7 @@ export default function Features() {
               style={{
                 fontSize: "90px",
                 fontWeight: 700,
-                fontFamily: "'Ultima Pro', Arial, Helvetica, sans-serif",
+                fontFamily: "var(--font-signika), Arial, Helvetica, sans-serif",
                 color: "#004a9b",
                 lineHeight: 1.2,
               }}

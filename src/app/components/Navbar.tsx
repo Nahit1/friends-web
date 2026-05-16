@@ -1,29 +1,44 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter, usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 import { FiSearch } from "react-icons/fi";
 
 const navLinks = [
   { href: "#anasayfa", label: "Anasayfa" },
-  { href: "#kedi", label: "Kedi" },
+  { href: "/kedi", label: "Kedi" },
   { href: "#kopek", label: "Köpek" },
   { href: "#blog", label: "Blog" },
   { href: "#iletisim", label: "İletişim" },
 ];
 
+const isHashLink = (href: string) => href.startsWith("#");
+
 export default function Navbar() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const onHome = pathname === "/";
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState("#anasayfa");
+  const [activeLink, setActiveLink] = useState(
+    pathname === "/kedi" ? "/kedi" : "#anasayfa"
+  );
   const [scrolled, setScrolled] = useState(false);
   const isClickScrolling = useRef(false);
 
   useEffect(() => {
-    const sectionIds = ["#anasayfa", "#kedi", "#kopek", "#blog", "#iletisim"];
+    if (!onHome) {
+      setActiveLink(pathname === "/kedi" ? "/kedi" : "");
+      const handleScrollOnly = () => setScrolled(window.scrollY > 10);
+      handleScrollOnly();
+      window.addEventListener("scroll", handleScrollOnly);
+      return () => window.removeEventListener("scroll", handleScrollOnly);
+    }
+
+    const sectionIds = ["#anasayfa", "#kopek", "#blog", "#iletisim"];
 
     const handleScroll = () => {
-      // Tıklama ile scroll oluyorsa, scroll spy'ı devre dışı bırak
       if (isClickScrolling.current) return;
 
       let current = "#anasayfa";
@@ -36,7 +51,6 @@ export default function Navbar() {
           }
         }
       }
-      // Sayfanın en altına ulaşıldığında iletişim aktif olsun
       const scrollBottom = window.innerHeight + window.scrollY;
       const docHeight = document.documentElement.scrollHeight;
       if (docHeight - scrollBottom < 50) {
@@ -48,7 +62,7 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [onHome, pathname]);
 
   return (
     <header style={{ position: "sticky", top: 0, zIndex: 50, boxShadow: scrolled ? "0 4px 12px rgba(0,0,0,0.1)" : "none", transition: "box-shadow 0.3s ease" }}>
@@ -218,7 +232,7 @@ export default function Navbar() {
               href={link.href}
               className="nav-link"
               style={{
-                fontFamily: "'Ultima Pro', Arial, Helvetica, sans-serif",
+                fontFamily: "var(--font-signika), Arial, Helvetica, sans-serif",
                 fontSize: "25px",
                 fontWeight: 700,
                 color: activeLink === link.href ? "#0ae2da" : "white",
@@ -231,14 +245,22 @@ export default function Navbar() {
               onClick={(e) => {
                 e.preventDefault();
                 setActiveLink(link.href);
-                isClickScrolling.current = true;
-                const el = document.querySelector(link.href);
-                if (el) {
-                  el.scrollIntoView({ behavior: "smooth", block: "start" });
+                if (isHashLink(link.href)) {
+                  if (!onHome) {
+                    router.push("/" + link.href);
+                    return;
+                  }
+                  isClickScrolling.current = true;
+                  const el = document.querySelector(link.href);
+                  if (el) {
+                    el.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }
+                  setTimeout(() => {
+                    isClickScrolling.current = false;
+                  }, 1000);
+                } else {
+                  router.push(link.href);
                 }
-                setTimeout(() => {
-                  isClickScrolling.current = false;
-                }, 1000);
               }}
             >
               <span
@@ -402,14 +424,22 @@ export default function Navbar() {
                 e.preventDefault();
                 setActiveLink(link.href);
                 setMobileOpen(false);
-                isClickScrolling.current = true;
-                const el = document.querySelector(link.href);
-                if (el) {
-                  el.scrollIntoView({ behavior: "smooth", block: "start" });
+                if (isHashLink(link.href)) {
+                  if (!onHome) {
+                    router.push("/" + link.href);
+                    return;
+                  }
+                  isClickScrolling.current = true;
+                  const el = document.querySelector(link.href);
+                  if (el) {
+                    el.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }
+                  setTimeout(() => {
+                    isClickScrolling.current = false;
+                  }, 1000);
+                } else {
+                  router.push(link.href);
                 }
-                setTimeout(() => {
-                  isClickScrolling.current = false;
-                }, 1000);
               }}
             >
               {link.label}
