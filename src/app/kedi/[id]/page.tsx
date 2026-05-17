@@ -4,14 +4,6 @@ import Image from "next/image";
 import { useState, use, useEffect } from "react";
 import { notFound } from "next/navigation";
 import { FiPlus, FiMinus } from "react-icons/fi";
-import {
-  GiPotato,
-  GiWheat,
-  GiSeedling,
-  GiChemicalDrop,
-  GiPalette,
-  GiSugarCane,
-} from "react-icons/gi";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import products from "../../data/dryCatFood.json";
@@ -30,12 +22,12 @@ const ACCORDION_ITEMS: { key: AccordionKey; label: string }[] = [
 ];
 
 const FEATURES = [
-  { Icon: GiPotato, label: "Patates\nİçermez" },
-  { Icon: GiWheat, label: "Buğday\nİçermez" },
-  { Icon: GiSeedling, label: "Soya\nİçermez" },
-  { Icon: GiChemicalDrop, label: "Kimyasal\nAroma\nİçermez" },
-  { Icon: GiPalette, label: "Renklendirici\nİçermez" },
-  { Icon: GiSugarCane, label: "Yapay\nTatlandırıcı\nİçermez" },
+  { icon: "/images/Asset 1.svg", label: "Patates\nİçermez" },
+  { icon: "/images/Asset 2.svg", label: "Buğday\nİçermez" },
+  { icon: "/images/Asset 3.svg", label: "Soya\nİçermez" },
+  { icon: "/images/Asset 4.svg", label: "Kimyasal\nAroma\nİçermez" },
+  { icon: "/images/Asset 5.svg", label: "Renklendirici\nİçermez" },
+  { icon: "/images/Asset 6.svg", label: "Yapay\nTatlandırıcı\nİçermez" },
 ];
 
 export default function KediDetailPage({
@@ -256,16 +248,6 @@ export default function KediDetailPage({
             align-items: center;
             gap: 16px;
           }
-          .why-feature-icon {
-            width: 76px;
-            height: 76px;
-            border-radius: 50%;
-            border: 2px solid #b08653;
-            color: #b08653;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
           .why-feature-label {
             font-size: 14px;
             color: #b08653;
@@ -447,11 +429,14 @@ export default function KediDetailPage({
               ve GDO içermez!
             </p>
             <div className="why-features">
-              {FEATURES.map(({ Icon, label }, i) => (
+              {FEATURES.map(({ icon, label }, i) => (
                 <div key={i} className="why-feature">
-                  <div className="why-feature-icon">
-                    <Icon size={36} />
-                  </div>
+                  <Image
+                    src={icon}
+                    alt={label.replace(/\n/g, " ")}
+                    width={90}
+                    height={90}
+                  />
                   <span className="why-feature-label">{label}</span>
                 </div>
               ))}
