@@ -79,6 +79,9 @@ export default function Features() {
           box-shadow: 4px 4px 0 0 #0bbbef !important;
           background-color: #053a7a !important;
         }
+        .urun-row-spacing-1 .urun-slider p {
+          font-size: 24px !important;
+        }
         @media (max-width: 1300px) {
           .features-left-text h2 {
             font-size: 44px !important;
@@ -93,20 +96,20 @@ export default function Features() {
             font-size: 44px !important;
           }
           .patili-cards .patili-card-circle {
-            width: 240px !important;
-            height: 240px !important;
+            width: 228px !important;
+            height: 228px !important;
           }
           .patili-cards .patili-card-label {
-            font-size: 30px !important;
+            font-size: 29px !important;
           }
           .patili-cards .patili-card-desc {
-            font-size: 19px !important;
+            font-size: 18px !important;
           }
           .patili-cards .cta-btn {
-            width: 210px !important;
-            height: 52px !important;
-            font-size: 16px !important;
-            margin-top: 30px !important;
+            width: 200px !important;
+            height: 49px !important;
+            font-size: 15px !important;
+            margin-top: 29px !important;
           }
           .urunlerimiz-title h2 {
             font-size: 55px !important;
@@ -121,7 +124,7 @@ export default function Features() {
             font-size: 27px !important;
           }
           .blog-card p {
-            font-size: 18px !important;
+            font-size: 16px !important;
           }
         }
         @media (max-width: 1160px) {
@@ -162,18 +165,18 @@ export default function Features() {
           .features-circles-row {
             left: 50% !important;
             transform: translateX(-50%) !important;
-            gap: 30px !important;
+            gap: 29px !important;
           }
           .features-circles-row .feature-circle {
-            width: 155px !important;
-            height: 155px !important;
+            width: 147px !important;
+            height: 147px !important;
           }
           .features-circles-row .feature-circle img {
-            width: 100px !important;
-            height: 100px !important;
+            width: 95px !important;
+            height: 95px !important;
           }
           .features-circles-row .feature-label {
-            font-size: 22px !important;
+            font-size: 21px !important;
           }
           .features-oval-bg {
             height: 270px !important;
@@ -182,20 +185,20 @@ export default function Features() {
         }
         @media (max-width: 1300px) {
           .features-circles-row {
-            gap: 15px !important;
+            gap: 14px !important;
           }
           .features-circles-row .feature-circle {
-            width: 130px !important;
-            height: 130px !important;
+            width: 124px !important;
+            height: 124px !important;
             border-width: 5px !important;
           }
           .features-circles-row .feature-circle img {
-            width: 80px !important;
-            height: 80px !important;
+            width: 76px !important;
+            height: 76px !important;
           }
           .features-circles-row .feature-label {
-            font-size: 18px !important;
-            margin-top: 25px !important;
+            font-size: 17px !important;
+            margin-top: 24px !important;
           }
           .features-oval-bg {
             height: 230px !important;
@@ -210,17 +213,17 @@ export default function Features() {
             gap: 8px !important;
           }
           .features-circles-row .feature-circle {
-            width: 100px !important;
-            height: 100px !important;
+            width: 95px !important;
+            height: 95px !important;
             border-width: 4px !important;
           }
           .features-circles-row .feature-circle img {
-            width: 60px !important;
-            height: 60px !important;
+            width: 57px !important;
+            height: 57px !important;
           }
           .features-circles-row .feature-label {
-            font-size: 14px !important;
-            margin-top: 15px !important;
+            font-size: 13px !important;
+            margin-top: 14px !important;
           }
           .features-oval-bg {
             height: 180px !important;
@@ -239,36 +242,36 @@ export default function Features() {
             font-size: 45px !important;
           }
           .patili-cards {
-            gap: 50px !important;
+            gap: 48px !important;
           }
           .patili-cards .patili-card-circle {
-            width: 240px !important;
-            height: 240px !important;
+            width: 228px !important;
+            height: 228px !important;
           }
           .patili-cards .patili-card-label {
-            font-size: 32px !important;
+            font-size: 30px !important;
           }
           .patili-cards .patili-card-desc {
-            font-size: 20px !important;
+            font-size: 19px !important;
           }
           .patili-cards .cta-btn {
-            width: 210px !important;
-            height: 52px !important;
-            font-size: 17px !important;
-            margin-top: 30px !important;
+            width: 200px !important;
+            height: 49px !important;
+            font-size: 16px !important;
+            margin-top: 29px !important;
           }
         }
         @media (max-width: 920px) {
           .patili-cards {
             flex-direction: column !important;
             align-items: center !important;
-            gap: 60px !important;
+            gap: 57px !important;
           }
           .patili-title h2 {
             font-size: 38px !important;
           }
           .patili-cards .cta-btn {
-            margin-top: 20px !important;
+            margin-top: 19px !important;
           }
         }
         @media (max-width: 1400px) {
@@ -304,6 +307,9 @@ export default function Features() {
             width: 150px !important;
           }
           .urun-slider p {
+            font-size: 19px !important;
+          }
+          .urun-row-spacing-1 .urun-slider p {
             font-size: 20px !important;
           }
           .urun-dots {
@@ -360,6 +366,9 @@ export default function Features() {
             height: 220px !important;
           }
           .urun-slider p {
+            font-size: 15px !important;
+          }
+          .urun-row-spacing-1 .urun-slider p {
             font-size: 16px !important;
           }
           .urun-dots {
@@ -386,7 +395,7 @@ export default function Features() {
             font-size: clamp(22px, 2.5vw, 40px) !important;
           }
           .blog-card p {
-            font-size: clamp(16px, 1.6vw, 25px) !important;
+            font-size: clamp(14px, 1.44vw, 23px) !important;
           }
         }
         @media (max-width: 1100px) {
@@ -417,7 +426,7 @@ export default function Features() {
             font-size: 28px !important;
           }
           .blog-card p {
-            font-size: 18px !important;
+            font-size: 16px !important;
           }
           .blog-card .blog-card-body {
             padding: 30px !important;
@@ -465,10 +474,10 @@ export default function Features() {
             >
               <p
                 style={{
-                  fontSize: "24px",
+                  fontSize: "22px",
                   color: "#515151",
                   lineHeight: 1.2,
-                  fontWeight: 400,
+                  fontWeight: 200,
                 }}
               >
                 Friends ile patili dostun için sadece mama ve kum değil; sağlık,
@@ -476,10 +485,10 @@ export default function Features() {
               </p>
               <p
                 style={{
-                  fontSize: "24px",
+                  fontSize: "22px",
                   color: "#515151",
                   lineHeight: 1.2,
-                  fontWeight: 400,
+                  fontWeight: 200,
                   marginTop: "12px",
                 }}
               >
@@ -488,10 +497,10 @@ export default function Features() {
               </p>
               <p
                 style={{
-                  fontSize: "24px",
+                  fontSize: "22px",
                   color: "#515151",
                   lineHeight: 1.2,
-                  fontWeight: 400,
+                  fontWeight: 200,
                   marginTop: "12px",
                 }}
               >
@@ -624,9 +633,10 @@ export default function Features() {
             style={{
               position: "absolute",
               top: 0,
-              left: "100px",
+              left: "50%",
+              transform: "translateX(-50%)",
               display: "flex",
-              gap: "50px",
+              gap: "48px",
               zIndex: 2,
             }}
           >
@@ -649,8 +659,8 @@ export default function Features() {
                 <div
                   className="feature-circle"
                   style={{
-                    width: "185px",
-                    height: "185px",
+                    width: "176px",
+                    height: "176px",
                     borderRadius: "50%",
                     border: "7px solid #dfdfdf",
                     background:
@@ -664,16 +674,16 @@ export default function Features() {
                   <Image
                     src={`/images/Vector Smart Object ${item.num}.png`}
                     alt={item.label}
-                    width={120}
-                    height={120}
+                    width={114}
+                    height={114}
                     style={{ objectFit: "contain" }}
                   />
                 </div>
                 <span
                   className="feature-label"
                   style={{
-                    marginTop: "40px",
-                    fontSize: "26px",
+                    marginTop: "38px",
+                    fontSize: "25px",
                     fontWeight: 700,
                     lineHeight: 1.2,
                     color: "#204391",
@@ -724,7 +734,7 @@ export default function Features() {
               className="patili-cards"
               style={{
                 display: "flex",
-                gap: "85px",
+                gap: "81px",
                 justifyContent: "center",
                 marginTop: "80px",
               }}
@@ -760,10 +770,10 @@ export default function Features() {
                     <div
                       style={{
                         position: "absolute",
-                        top: "230px",
-                        left: "20px",
-                        width: "40px",
-                        height: "40px",
+                        top: "219px",
+                        left: "19px",
+                        width: "38px",
+                        height: "38px",
                         backgroundColor: "#fded31",
                         borderRadius: "50%",
                         zIndex: 0,
@@ -773,10 +783,10 @@ export default function Features() {
                   <div
                     className="patili-card-circle"
                     style={{
-                      width: "300px",
-                      height: "300px",
+                      width: "285px",
+                      height: "285px",
                       borderRadius: "50%",
-                      border: "12px solid #e6e5e5",
+                      border: "11px solid #e6e5e5",
                       boxSizing: "border-box",
                       overflow: "hidden",
                       position: "relative",
@@ -793,8 +803,8 @@ export default function Features() {
                   <p
                     className="patili-card-label"
                     style={{
-                      marginTop: "20px",
-                      fontSize: "40px",
+                      marginTop: "19px",
+                      fontSize: "38px",
                       fontWeight: 700,
                       color: "#000000",
                       textAlign: "center",
@@ -806,9 +816,9 @@ export default function Features() {
                   <p
                     className="patili-card-desc"
                     style={{
-                      marginTop: "30px",
-                      fontSize: "25px",
-                      fontWeight: 400,
+                      marginTop: "29px",
+                      fontSize: "24px",
+                      fontWeight: 200,
                       color: "#000000",
                       textAlign: "center",
                       lineHeight: 1.5,
@@ -833,19 +843,19 @@ export default function Features() {
                       display: "inline-flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      width: "250px",
-                      height: "60px",
+                      width: "238px",
+                      height: "57px",
                       backgroundColor: "#064597",
                       borderRadius: "35px",
                       color: "white",
-                      fontSize: "20px",
+                      fontSize: "19px",
                       fontWeight: 700,
                       letterSpacing: "1.2px",
                       textTransform: "uppercase",
                       textDecoration: "none",
                       cursor: "pointer",
                       boxShadow: "10px 10px 0 0 #0bbbef",
-                      marginTop: "70px",
+                      marginTop: "67px",
                     }}
                   >
                     ÜRÜNLERE GİT
@@ -987,7 +997,7 @@ export default function Features() {
                       <p
                         style={{
                           marginTop: "8px",
-                          fontSize: "24px",
+                          fontSize: "23px",
                           fontWeight: 300,
                           color: "#000000",
                           textAlign: "center",
@@ -1137,7 +1147,7 @@ export default function Features() {
                       <p
                         style={{
                           marginTop: "8px",
-                          fontSize: "24px",
+                          fontSize: "23px",
                           fontWeight: 300,
                           color: "#000000",
                           textAlign: "center",
@@ -1282,7 +1292,7 @@ export default function Features() {
                       <p
                         style={{
                           marginTop: "8px",
-                          fontSize: "24px",
+                          fontSize: "23px",
                           fontWeight: 300,
                           color: "#000000",
                           textAlign: "center",
@@ -1448,7 +1458,7 @@ export default function Features() {
                   <p
                     style={{
                       marginTop: "30px",
-                      fontSize: "25px",
+                      fontSize: "23px",
                       fontWeight: 400,
                       color: "white",
                       lineHeight: 1.2,

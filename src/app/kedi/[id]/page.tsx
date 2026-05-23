@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState, use, useEffect } from "react";
 import { notFound } from "next/navigation";
-import { FiPlus, FiMinus } from "react-icons/fi";
+import { FiPlus, FiMinus, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import products from "../../data/dryCatFood.json";
@@ -39,6 +39,7 @@ export default function KediDetailPage({
   const product = products.find((p) => String(p.id) === id);
 
   const [openKey, setOpenKey] = useState<AccordionKey | null>("aciklama");
+  const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
     const prev = document.documentElement.style.scrollBehavior;
@@ -51,6 +52,8 @@ export default function KediDetailPage({
   }, []);
 
   if (!product) notFound();
+
+  const galleryImages = Array.from({ length: 5 }, () => product.image);
 
   const toggle = (k: AccordionKey) => setOpenKey(openKey === k ? null : k);
 
@@ -70,6 +73,7 @@ export default function KediDetailPage({
             align-items: start;
           }
           .detail-image-card {
+            position: relative;
             background: white;
             border: 1px solid #f0f0f0;
             border-radius: 24px;
@@ -85,6 +89,32 @@ export default function KediDetailPage({
             max-height: 90%;
             object-fit: contain;
           }
+          .detail-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+            color: #064597;
+            transition: background-color 0.2s ease, color 0.2s ease,
+              transform 0.2s ease;
+            z-index: 2;
+          }
+          .detail-arrow:hover {
+            background: #0bbbef;
+            color: white;
+            transform: translateY(-50%) scale(1.05);
+          }
+          .detail-arrow-left { left: 18px; }
+          .detail-arrow-right { right: 18px; }
           .detail-thumbs {
             display: flex;
             gap: 14px;
@@ -104,6 +134,10 @@ export default function KediDetailPage({
             transition: border-color 0.2s ease;
           }
           .detail-thumb:hover { border-color: #0bbbef; }
+          .detail-thumb.is-active {
+            border-color: #0bbbef;
+            box-shadow: 0 0 0 2px rgba(11, 187, 239, 0.25);
+          }
           .detail-thumb img {
             max-width: 80%;
             max-height: 80%;
@@ -129,9 +163,9 @@ export default function KediDetailPage({
             gap: 16px;
           }
           .acc-item {
-            border: 1px solid #e2e2e2;
+            border: 1px solid #e8e8e8;
             border-radius: 24px;
-            background: #e6e6e6;
+            background: #ececec;
             overflow: hidden;
           }
           .acc-header {
@@ -141,7 +175,7 @@ export default function KediDetailPage({
             min-height: 85px;
             padding: 0 36px;
             cursor: pointer;
-            background: #e6e6e6;
+            background: #ececec;
             border: none;
             width: 100%;
             text-align: left;
@@ -185,14 +219,15 @@ export default function KediDetailPage({
           .friends-title {
             font-family: var(--font-signika), Arial, Helvetica, sans-serif;
             font-size: 60px;
-            font-weight: 300;
+            font-weight: 500;
             color: #064597;
             line-height: 1.15;
             letter-spacing: 1px;
             margin-bottom: 32px;
           }
           .friends-text {
-            font-size: 17px;
+            font-size: 15px;
+            font-weight: 200;
             color: #2d2d2d;
             line-height: 1.7;
             margin-bottom: 18px;
@@ -292,8 +327,20 @@ export default function KediDetailPage({
         <section className="detail-top">
           <div>
             <div className="detail-image-card">
+              <button
+                type="button"
+                aria-label="Önceki görsel"
+                className="detail-arrow detail-arrow-left"
+                onClick={() =>
+                  setCurrentImage(
+                    (i) => (i - 1 + galleryImages.length) % galleryImages.length
+                  )
+                }
+              >
+                <FiChevronLeft size={26} strokeWidth={3} />
+              </button>
               <Image
-                src={product.image}
+                src={galleryImages[currentImage]}
                 alt={product.title}
                 width={520}
                 height={520}
@@ -306,12 +353,26 @@ export default function KediDetailPage({
                 }}
                 priority
               />
+              <button
+                type="button"
+                aria-label="Sonraki görsel"
+                className="detail-arrow detail-arrow-right"
+                onClick={() =>
+                  setCurrentImage((i) => (i + 1) % galleryImages.length)
+                }
+              >
+                <FiChevronRight size={26} strokeWidth={3} />
+              </button>
             </div>
             <div className="detail-thumbs">
-              {[0, 1, 2, 3, 4].map((i) => (
-                <div key={i} className="detail-thumb">
+              {galleryImages.map((src, i) => (
+                <div
+                  key={i}
+                  className={`detail-thumb${currentImage === i ? " is-active" : ""}`}
+                  onClick={() => setCurrentImage(i)}
+                >
                   <Image
-                    src={product.image}
+                    src={src}
                     alt={`${product.title} ${i + 1}`}
                     width={140}
                     height={140}
@@ -388,7 +449,7 @@ export default function KediDetailPage({
               </p>
               <p className="friends-text">
                 Doğal içerikler, kaliteli ürünler ve sevgi dolu bakım tek yerde:{" "}
-                <strong>Friends</strong>
+                Friends
               </p>
               <p className="friends-text">
                 Çünkü onlar evcil hayvan değil, ailenin bir parçası.

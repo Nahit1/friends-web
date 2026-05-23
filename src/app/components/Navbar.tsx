@@ -6,10 +6,24 @@ import { useState, useEffect, useRef } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 import { FiSearch } from "react-icons/fi";
 
-const navLinks = [
+type NavLink = {
+  href: string;
+  label: string;
+  submenu?: string[];
+};
+
+const navLinks: NavLink[] = [
   { href: "#anasayfa", label: "Anasayfa" },
-  { href: "/kedi", label: "Kedi" },
-  { href: "#kopek", label: "Köpek" },
+  {
+    href: "/kedi",
+    label: "Kedi",
+    submenu: ["Kuru Mamalar", "Yaş Mamalar", "Kedi Kumları"],
+  },
+  {
+    href: "#kopek",
+    label: "Köpek",
+    submenu: ["Kuru Mamalar", "Yaş Mamalar"],
+  },
   { href: "#blog", label: "Blog" },
   { href: "#iletisim", label: "İletişim" },
 ];
@@ -25,8 +39,43 @@ export default function Navbar() {
     pathname === "/kedi" ? "/kedi" : "#anasayfa"
   );
   const [scrolled, setScrolled] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const isClickScrolling = useRef(false);
   const shouldScrollTopRef = useRef(false);
+
+  const handleNavigate = (href: string) => {
+    setActiveLink(href);
+    if (isHashLink(href)) {
+      if (!onHome) {
+        if (href === "#anasayfa") {
+          shouldScrollTopRef.current = true;
+          router.push("/");
+        } else {
+          router.push("/" + href);
+        }
+        return;
+      }
+      if (href === "#anasayfa") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+      isClickScrolling.current = true;
+      const el = document.querySelector(href);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      setTimeout(() => {
+        isClickScrolling.current = false;
+      }, 1000);
+    } else {
+      if (pathname === href) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        shouldScrollTopRef.current = true;
+        router.push(href);
+      }
+    }
+  };
 
   useEffect(() => {
     if (shouldScrollTopRef.current) {
@@ -91,62 +140,39 @@ export default function Navbar() {
         .nav-dot {
           transition: opacity 0.3s ease, transform 0.3s ease;
         }
+        .nav-dropdown-item:hover {
+          color: #0bbbef !important;
+          background-color: #f4f7fb;
+        }
         @media (max-width: 1750px) {
           .nav-blue-bar {
-            width: 700px !important;
-            gap: 30px !important;
-            padding-left: 40px !important;
+            width: 630px !important;
+            gap: 27px !important;
+            padding-left: 36px !important;
           }
           .nav-blue-bar .nav-link {
-            font-size: 22px !important;
+            font-size: 20px !important;
           }
           .nav-search-bar input {
-            font-size: 22px !important;
+            font-size: 21px !important;
           }
         }
         @media (max-width: 1600px) {
           .nav-blue-bar {
-            width: 650px !important;
-            gap: 25px !important;
-            padding-left: 35px !important;
-            height: 55px !important;
-          }
-          .nav-blue-bar .nav-link {
-            font-size: 20px !important;
-          }
-          .nav-logo-desktop img {
-            height: 150px !important;
-            top: 40px !important;
-          }
-          .nav-search-bar {
-            width: 320px !important;
-            margin-left: 80px !important;
-          }
-          .nav-search-bar input {
-            height: 55px !important;
-            font-size: 20px !important;
-          }
-          .nav-search-bar button {
-            width: 42px !important;
-            height: 42px !important;
-          }
-        }
-        @media (max-width: 1400px) {
-          .nav-blue-bar {
-            width: 580px !important;
-            gap: 18px !important;
-            padding-left: 25px !important;
+            width: 585px !important;
+            gap: 23px !important;
+            padding-left: 32px !important;
             height: 50px !important;
           }
           .nav-blue-bar .nav-link {
             font-size: 18px !important;
           }
           .nav-logo-desktop img {
-            height: 130px !important;
-            top: 35px !important;
+            height: 150px !important;
+            top: 40px !important;
           }
           .nav-search-bar {
-            width: 280px !important;
+            width: 290px !important;
             margin-left: 60px !important;
           }
           .nav-search-bar input {
@@ -154,41 +180,68 @@ export default function Navbar() {
             font-size: 18px !important;
           }
           .nav-search-bar button {
-            width: 40px !important;
-            height: 40px !important;
+            width: 38px !important;
+            height: 38px !important;
+          }
+        }
+        @media (max-width: 1400px) {
+          .nav-blue-bar {
+            width: 522px !important;
+            gap: 16px !important;
+            padding-left: 23px !important;
+            height: 45px !important;
+          }
+          .nav-blue-bar .nav-link {
+            font-size: 16px !important;
+          }
+          .nav-logo-desktop img {
+            height: 130px !important;
+            top: 35px !important;
+          }
+          .nav-search-bar {
+            width: 250px !important;
+            margin-left: 45px !important;
+          }
+          .nav-search-bar input {
+            height: 44px !important;
+            font-size: 16px !important;
+          }
+          .nav-search-bar button {
+            width: 36px !important;
+            height: 36px !important;
           }
         }
         @media (max-width: 1125px) {
           .nav-blue-bar {
-            width: 480px !important;
-            gap: 12px !important;
-            padding-left: 20px !important;
-            padding-right: 20px !important;
-            height: 45px !important;
+            width: 432px !important;
+            gap: 11px !important;
+            padding-left: 18px !important;
+            padding-right: 18px !important;
+            height: 41px !important;
           }
           .nav-blue-bar .nav-link {
-            font-size: 15px !important;
+            font-size: 14px !important;
           }
           .nav-blue-bar .nav-dot {
-            width: 7px !important;
-            height: 7px !important;
+            width: 6px !important;
+            height: 6px !important;
           }
           .nav-logo-desktop img {
             height: 110px !important;
             top: 30px !important;
           }
           .nav-search-bar {
-            width: 220px !important;
-            margin-left: 40px !important;
+            width: 200px !important;
+            margin-left: 30px !important;
           }
           .nav-search-bar input {
-            height: 45px !important;
-            font-size: 15px !important;
-            padding-left: 15px !important;
+            height: 40px !important;
+            font-size: 14px !important;
+            padding-left: 14px !important;
           }
           .nav-search-bar button {
-            width: 35px !important;
-            height: 35px !important;
+            width: 32px !important;
+            height: 32px !important;
           }
         }
         @media (max-width: 920px) {
@@ -229,82 +282,116 @@ export default function Navbar() {
             top: "50%",
             transform: "translateY(-50%)",
             right: 0,
-            width: "800px",
-            height: "60px",
+            width: "720px",
+            height: "54px",
             backgroundColor: "#064597",
             borderTopLeftRadius: "35px",
             borderBottomLeftRadius: "35px",
-            paddingLeft: "55px",
-            paddingRight: "40px",
-            gap: "40px",
+            paddingLeft: "50px",
+            paddingRight: "36px",
+            gap: "36px",
             zIndex: 2,
           }}
         >
           {navLinks.map((link) => (
-            <a
+            <div
               key={link.href}
-              href={link.href}
-              className="nav-link"
+              onMouseEnter={() => {
+                if (link.submenu) setOpenDropdown(link.href);
+              }}
+              onMouseLeave={() => {
+                if (link.submenu) setOpenDropdown(null);
+              }}
               style={{
-                fontFamily: "var(--font-signika), Arial, Helvetica, sans-serif",
-                fontSize: "25px",
-                fontWeight: 700,
-                color: activeLink === link.href ? "#0ae2da" : "white",
-                textDecoration: "none",
-                whiteSpace: "nowrap",
+                position: "relative",
                 display: "flex",
                 alignItems: "center",
-                gap: "10px",
-              }}
-              onClick={(e) => {
-                e.preventDefault();
-                setActiveLink(link.href);
-                if (isHashLink(link.href)) {
-                  if (!onHome) {
-                    if (link.href === "#anasayfa") {
-                      shouldScrollTopRef.current = true;
-                      router.push("/");
-                    } else {
-                      router.push("/" + link.href);
-                    }
-                    return;
-                  }
-                  if (link.href === "#anasayfa") {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                    return;
-                  }
-                  isClickScrolling.current = true;
-                  const el = document.querySelector(link.href);
-                  if (el) {
-                    el.scrollIntoView({ behavior: "smooth", block: "start" });
-                  }
-                  setTimeout(() => {
-                    isClickScrolling.current = false;
-                  }, 1000);
-                } else {
-                  if (pathname === link.href) {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  } else {
-                    shouldScrollTopRef.current = true;
-                    router.push(link.href);
-                  }
-                }
               }}
             >
-              <span
-                className="nav-dot"
+              <a
+                href={link.href}
+                className="nav-link"
                 style={{
-                  display: "inline-block",
-                  width: "10px",
-                  height: "10px",
-                  backgroundColor: "#0ae2da",
-                  borderRadius: "50%",
-                  opacity: activeLink === link.href ? 1 : 0,
-                  transform: activeLink === link.href ? "scale(1)" : "scale(0)",
+                  fontFamily: "var(--font-signika), Arial, Helvetica, sans-serif",
+                  fontSize: "23px",
+                  fontWeight: 700,
+                  color: activeLink === link.href ? "#0ae2da" : "white",
+                  textDecoration: "none",
+                  whiteSpace: "nowrap",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "9px",
                 }}
-              />
-              {link.label}
-            </a>
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavigate(link.href);
+                }}
+              >
+                <span
+                  className="nav-dot"
+                  style={{
+                    display: "inline-block",
+                    width: "9px",
+                    height: "9px",
+                    backgroundColor: "#0ae2da",
+                    borderRadius: "50%",
+                    opacity: activeLink === link.href ? 1 : 0,
+                    transform: activeLink === link.href ? "scale(1)" : "scale(0)",
+                  }}
+                />
+                {link.label}
+              </a>
+              {link.submenu && openDropdown === link.href && (
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "100%",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    paddingTop: "14px",
+                    zIndex: 10,
+                  }}
+                >
+                  <div
+                    style={{
+                      backgroundColor: "white",
+                      borderRadius: "14px",
+                      boxShadow: "0 8px 24px rgba(0,0,0,0.18)",
+                      padding: "8px 0",
+                      minWidth: "190px",
+                    }}
+                  >
+                    {link.submenu.map((item) => (
+                      <a
+                        key={item}
+                        href={link.href}
+                        className="nav-dropdown-item"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setOpenDropdown(null);
+                          handleNavigate(link.href);
+                        }}
+                        style={{
+                          display: "block",
+                          padding: "10px 22px",
+                          color: "#064597",
+                          fontFamily:
+                            "var(--font-signika), Arial, Helvetica, sans-serif",
+                          fontSize: "18px",
+                          fontWeight: 600,
+                          textDecoration: "none",
+                          whiteSpace: "nowrap",
+                          transition:
+                            "color 0.2s ease, background-color 0.2s ease",
+                        }}
+                      >
+                        {item}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           ))}
         </div>
 
@@ -369,9 +456,9 @@ export default function Navbar() {
           <div
             style={{
               position: "relative",
-              width: "410px",
+              width: "370px",
               flexShrink: 0,
-              marginLeft: "120px",
+              marginLeft: "80px",
             }}
             className="hidden md:block nav-search-bar"
           >
@@ -381,13 +468,13 @@ export default function Navbar() {
               style={{
                 fontFamily: "Arial, Helvetica, sans-serif",
                 width: "100%",
-                height: "65px",
-                paddingLeft: "20px",
-                paddingRight: "44px",
+                height: "58px",
+                paddingLeft: "18px",
+                paddingRight: "40px",
                 borderRadius: "9999px",
                 border: "1px solid #e0e0e0",
                 backgroundColor: "white",
-                fontSize: "24px",
+                fontSize: "22px",
                 color: "#666",
                 outline: "none",
               }}
@@ -398,8 +485,8 @@ export default function Navbar() {
                 right: "3px",
                 top: "50%",
                 transform: "translateY(-50%)",
-                width: "50px",
-                height: "50px",
+                width: "45px",
+                height: "45px",
                 backgroundColor: "#0bbbef",
                 borderRadius: "9999px",
                 display: "flex",
@@ -410,7 +497,7 @@ export default function Navbar() {
                 marginRight: "3px",
               }}
             >
-              <FiSearch size={25} color="white" strokeWidth={3} />
+              <FiSearch size={22} color="white" strokeWidth={3} />
             </button>
           </div>
 

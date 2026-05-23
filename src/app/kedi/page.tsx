@@ -70,7 +70,7 @@ export default function KediPage() {
           .kedi-banner-title {
             font-family: var(--font-signika), Arial, Helvetica, sans-serif;
             font-size: 56px;
-            font-weight: 300;
+            font-weight: 500;
             color: white;
             letter-spacing: 2px;
             margin-left: 330px;
@@ -86,7 +86,7 @@ export default function KediPage() {
             object-position: bottom;
           }
           .kedi-filter-row {
-            max-width: 1400px;
+            max-width: 1420px;
             margin: 0 auto;
             padding: 60px 60px 20px;
             display: flex;
@@ -116,9 +116,12 @@ export default function KediPage() {
           }
           .kedi-products-grid {
             display: grid;
-            grid-template-columns: repeat(3, 310px);
+            grid-template-columns: repeat(4, 310px);
             column-gap: 20px;
             row-gap: 40px;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
           }
           .kedi-cylinders {
             position: absolute;
@@ -190,7 +193,7 @@ export default function KediPage() {
           }
           .kedi-product-title {
             font-family: var(--font-signika), Arial, Helvetica, sans-serif;
-            font-size: 23px;
+            font-size: 21px;
             color: #404040;
             text-align: center;
             line-height: 1.3;
@@ -264,7 +267,7 @@ export default function KediPage() {
               max-width: 320px;
             }
             .kedi-product-title {
-              font-size: 14px;
+              font-size: 13px;
             }
           }
         `}</style>
@@ -285,15 +288,7 @@ export default function KediPage() {
           </div>
         </section>
 
-        <div
-          ref={filterRowRef}
-          className="kedi-filter-row"
-          style={
-            filterPaddingRight != null
-              ? { paddingRight: `${filterPaddingRight}px` }
-              : undefined
-          }
-        >
+        <div ref={filterRowRef} className="kedi-filter-row">
           <button
             className="kedi-filter-btn"
             onClick={() => setFilterOpen(!filterOpen)}
