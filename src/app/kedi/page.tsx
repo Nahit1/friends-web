@@ -148,7 +148,7 @@ export default function KediPage() {
           }
           .kedi-product-card {
             width: 310px;
-            height: 525px;
+            height: 530px;
             background: white;
             border-radius: 32px;
             padding: 18px 18px 22px;

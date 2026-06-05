@@ -85,8 +85,8 @@ export default function KediDetailPage({
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
           }
           .detail-image-card img {
-            max-width: 90%;
-            max-height: 90%;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
           }
           .detail-arrow {
@@ -226,10 +226,10 @@ export default function KediDetailPage({
             margin-bottom: 32px;
           }
           .friends-text {
-            font-size: 15px;
-            font-weight: 200;
-            color: #2d2d2d;
-            line-height: 1.7;
+            font-family: var(--font-signika), Arial, Helvetica, sans-serif;
+            font-size: 21px;
+            color: #404040;
+            line-height: 1.3;
             margin-bottom: 18px;
             max-width: 520px;
           }
@@ -345,10 +345,8 @@ export default function KediDetailPage({
                 width={520}
                 height={520}
                 style={{
-                  width: "auto",
-                  height: "auto",
-                  maxWidth: "100%",
-                  maxHeight: "100%",
+                  width: "100%",
+                  height: "100%",
                   objectFit: "contain",
                 }}
                 priority

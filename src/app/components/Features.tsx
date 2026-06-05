@@ -474,10 +474,10 @@ export default function Features() {
             >
               <p
                 style={{
-                  fontSize: "22px",
-                  color: "#515151",
-                  lineHeight: 1.2,
-                  fontWeight: 200,
+                  fontFamily: "var(--font-signika), Arial, Helvetica, sans-serif",
+                  fontSize: "21px",
+                  color: "#404040",
+                  lineHeight: 1.3,
                 }}
               >
                 Friends ile patili dostun için sadece mama ve kum değil; sağlık,
@@ -485,10 +485,10 @@ export default function Features() {
               </p>
               <p
                 style={{
-                  fontSize: "22px",
-                  color: "#515151",
-                  lineHeight: 1.2,
-                  fontWeight: 200,
+                  fontFamily: "var(--font-signika), Arial, Helvetica, sans-serif",
+                  fontSize: "21px",
+                  color: "#404040",
+                  lineHeight: 1.3,
                   marginTop: "12px",
                 }}
               >
@@ -497,10 +497,10 @@ export default function Features() {
               </p>
               <p
                 style={{
-                  fontSize: "22px",
-                  color: "#515151",
-                  lineHeight: 1.2,
-                  fontWeight: 200,
+                  fontFamily: "var(--font-signika), Arial, Helvetica, sans-serif",
+                  fontSize: "21px",
+                  color: "#404040",
+                  lineHeight: 1.3,
                   marginTop: "12px",
                 }}
               >
