@@ -162,7 +162,7 @@ export default function Navbar() {
             width: 585px !important;
             gap: 23px !important;
             padding-left: 32px !important;
-            height: 50px !important;
+            height: 52px !important;
           }
           .nav-blue-bar .nav-link {
             font-size: 18px !important;
@@ -172,16 +172,16 @@ export default function Navbar() {
             top: 40px !important;
           }
           .nav-search-bar {
-            width: 290px !important;
-            margin-left: 60px !important;
+            width: 360px !important;
+            margin-left: 75px !important;
           }
           .nav-search-bar input {
-            height: 50px !important;
-            font-size: 18px !important;
+            height: 52px !important;
+            font-size: 19px !important;
           }
           .nav-search-bar button {
-            width: 38px !important;
-            height: 38px !important;
+            width: 40px !important;
+            height: 40px !important;
           }
         }
         @media (max-width: 1400px) {

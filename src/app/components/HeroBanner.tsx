@@ -14,7 +14,13 @@ export default function HeroBanner() {
   }, []);
 
   return (
-    <section id="anasayfa" style={{ position: "relative", width: "100%", height: "1190px", marginTop: "190px", overflow: "hidden" }}>
+    <section id="anasayfa" className="hero-section" style={{ position: "relative", width: "100%", height: "1190px", overflow: "hidden" }}>
+      <style>{`
+        .hero-section { margin-top: 190px; }
+        @media (max-width: 1600px) { .hero-section { margin-top: 150px !important; } }
+        @media (max-width: 1400px) { .hero-section { margin-top: 130px !important; } }
+        @media (max-width: 1125px) { .hero-section { margin-top: 110px !important; } }
+      `}</style>
       {/* Video Background - full cover */}
       <video
         autoPlay
@@ -23,10 +29,12 @@ export default function HeroBanner() {
         playsInline
         style={{
           position: "absolute",
-          inset: 0,
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
           width: "100%",
           height: "100%",
-          objectFit: "cover",
+          objectFit: "fill",
         }}
       >
         <source src="/videos/hero-video.mp4" type="video/mp4" />

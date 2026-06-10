@@ -283,7 +283,7 @@ export default function KediPage() {
           />
           <div className="kedi-banner-inner">
             <h1 ref={titleRef} className="kedi-banner-title">
-              DRY CAT FOOD SERIES
+              Kedi Ürünleri
             </h1>
           </div>
         </section>
